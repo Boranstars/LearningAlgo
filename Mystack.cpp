@@ -62,12 +62,12 @@ namespace Mystack
         {
             ListNode<T> *node = this->stackTop;
             vector<T> result(this->size());
-            for (int i = result.size() - 1; i >= 0; i--)
+            for (int i = 0; i < result.size(); i++)
             {
                 result[i] = node->val;
                 node = node->nextNode;
             }
-            std::reverse(result.begin(), result.end());
+            
             return result;
             
 
