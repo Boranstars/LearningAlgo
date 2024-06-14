@@ -73,4 +73,18 @@ namespace MylistNode
         std::cout << std::endl;
     }
 
+    template<typename T>
+    void freeMemoryListNode(ListNode<T> *head)
+    {
+         ListNode<T> *currentNode = head;
+        while (currentNode != nullptr)
+        {
+            ListNode<T> *nextNode = currentNode->nextNode;
+            delete currentNode;
+            currentNode = nextNode;
+        }
+    
+        }
+
+
 } // namespace MylistNode
