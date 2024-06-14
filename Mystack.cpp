@@ -3,32 +3,31 @@
 #include <stdexcept>
 #include <algorithm>
 namespace Mystack
-{   
+{
     using namespace MylistNode;
     using std::vector;
-    template<typename T>
+    template <typename T>
     class Mystack
     {
     private:
         int stackSize;
         ListNode<T> *stackTop;
+
     public:
         Mystack(/* args */);
         ~Mystack();
 
-        int size() 
+        int size()
         {
             return this->stackSize;
         }
 
-        
-        bool isEmpty() 
+        bool isEmpty()
         {
             return this->stackSize == 0;
         }
 
-        
-        void push(T val) 
+        void push(T val)
         {
             ListNode<T> *node = new ListNode<T>(val);
             node->nextNode = stackTop;
@@ -36,8 +35,7 @@ namespace Mystack
             ++stackSize;
         }
 
-        
-        T pop() 
+        T pop()
         {
             T poped = this->top();
             ListNode<T> *tmp = this->stackTop;
@@ -47,8 +45,7 @@ namespace Mystack
             return poped;
         }
 
-       
-        T top() 
+        T top()
         {
             if (this->isEmpty())
             {
@@ -57,8 +54,7 @@ namespace Mystack
             return this->stackTop->val;
         }
 
-        
-        vector<T> toVector() 
+        vector<T> toVector()
         {
             ListNode<T> *node = this->stackTop;
             vector<T> result(this->size());
@@ -67,13 +63,9 @@ namespace Mystack
                 result[i] = node->val;
                 node = node->nextNode;
             }
-            
-            return result;
-            
 
+            return result;
         }
-        
-        
     };
 
     template <typename T>

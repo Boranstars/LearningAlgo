@@ -1,36 +1,36 @@
 #include <iostream>
 
 namespace MylistNode
-{   
-    template<typename T>
+{
+    template <typename T>
     struct ListNode
     {
         T val;
         ListNode *nextNode;
-        ListNode(T nodeval) : val(nodeval), nextNode(nullptr) {};
+        ListNode(T nodeval) : val(nodeval), nextNode(nullptr){};
     };
 
-    template<typename T>
+    template <typename T>
     void insert(ListNode<T> *node, ListNode<T> *insertedNode)
     {
         insertedNode->nextNode = node->nextNode;
         node->nextNode = insertedNode;
     }
 
-    template<typename T>
+    template <typename T>
     void removeAfter(ListNode<T> *node)
     {
         if (node->nextNode == nullptr)
         {
             return;
         }
-        
+
         ListNode<T> *P = node->nextNode;
         node->nextNode = P->nextNode;
         delete P;
     }
 
-    template<typename T>
+    template <typename T>
     ListNode<T> *acsses(ListNode<T> *head, int index)
     {
         for (int i = 0; i < index; i++)
@@ -44,8 +44,8 @@ namespace MylistNode
         return head;
     }
 
-    template<typename T>
-    int find(ListNode<T> *head, T target) 
+    template <typename T>
+    int find(ListNode<T> *head, T target)
     {
         int index(0);
         while (head != nullptr)
@@ -58,33 +58,31 @@ namespace MylistNode
             ++index;
         }
         return -1;
-        
     }
 
-    template<typename T>
-    void printListNode(ListNode<T> *head) 
+    template <typename T>
+    void printListNode(ListNode<T> *head)
     {
         while (head != nullptr)
         {
             std::cout << head->val;
-            if(head->nextNode != nullptr) std::cout << "->";
+            if (head->nextNode != nullptr)
+                std::cout << "->";
             head = head->nextNode;
         }
         std::cout << std::endl;
     }
 
-    template<typename T>
+    template <typename T>
     void freeMemoryListNode(ListNode<T> *head)
     {
-         ListNode<T> *currentNode = head;
+        ListNode<T> *currentNode = head;
         while (currentNode != nullptr)
         {
             ListNode<T> *nextNode = currentNode->nextNode;
             delete currentNode;
             currentNode = nextNode;
         }
-    
-        }
-
+    }
 
 } // namespace MylistNode
