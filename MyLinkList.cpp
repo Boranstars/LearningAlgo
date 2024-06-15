@@ -1,6 +1,6 @@
 #include <iostream>
 
-namespace MylistNode
+namespace MyListNode
 {
     template <typename T>
     struct ListNode
@@ -74,15 +74,23 @@ namespace MylistNode
     }
 
     template <typename T>
-    void freeMemoryListNode(ListNode<T> *head)
+    void freeMemoryListNode(ListNode<T> *currentNode)
     {
-        ListNode<T> *currentNode = head;
+        ListNode<T> *preNode;
         while (currentNode != nullptr)
         {
-            ListNode<T> *nextNode = currentNode->nextNode;
-            delete currentNode;
-            currentNode = nextNode;
+            preNode = currentNode;
+            currentNode = preNode->next;
+            delete preNode;
         }
+        
+
+    //     ListNode *pre;
+    // while (cur != nullptr) {
+    //     pre = cur;
+    //     cur = cur->next;
+    //     delete pre;
     }
+    
 
 } // namespace MylistNode

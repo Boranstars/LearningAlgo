@@ -1,10 +1,11 @@
-#include "MyLinkList.cpp"
+#include "MyLinkList.hpp"
 #include <vector>
 #include <stdexcept>
 #include <algorithm>
+#include <iostream>
 namespace Mystack
 {
-    using namespace MylistNode;
+    using namespace MyListNode;
     using std::vector;
     template <typename T>
     class Mystack
@@ -12,7 +13,21 @@ namespace Mystack
     private:
         int stackSize;
         ListNode<T> *stackTop;
-
+        std::string toString()
+        {
+            vector<T> stackVector = this->toVector();
+            std::string result = "{";
+            for (int i = 0; i < stackVector.size(); i++)
+            {
+                result += std::to_string(stackVector[i]);
+                if (i < stackVector.size() - 1)
+                {
+                    result += ", ";
+                }
+            }
+            result += "}";
+            return result;
+        }
     public:
         Mystack(/* args */);
         ~Mystack();
@@ -65,6 +80,11 @@ namespace Mystack
             }
 
             return result;
+        }
+
+        operator std::string()
+        {
+            return this->toString();
         }
     };
 
