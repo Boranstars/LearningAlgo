@@ -10,6 +10,7 @@ namespace MyQueue
     class LinkedListQueue
     {
     private:
+    
         ListNode<T> *front, *rear;
         int queueSize;
 
@@ -30,11 +31,24 @@ namespace MyQueue
         }
     public:
         LinkedListQueue(/* args */) : front(nullptr), rear(nullptr), queueSize(0) {};
-        ~LinkedListQueue() {};
+        ~LinkedListQueue() {
+            ListNode<T> *pre, *cur = this->front;
+            while (cur != nullptr)
+            {
+                pre = cur;
+                cur = cur->nextNode;
+                delete pre;
+            }
+        };
 
         int size()
         {
             return this->queueSize;
+        }
+
+        bool isEmpty()
+        {
+            return this->size() == 0;
         }
 
         void push(T val)
